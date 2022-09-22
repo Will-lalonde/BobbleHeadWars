@@ -1582,10 +1582,12 @@ m_PackageAssets:
         - 2.1.7
         - 2.1.8
         - 2.1.9
+        - 2.1.10
         compatible:
         - 2.1.8
         - 2.1.9
-        verified: 2.1.9
+        - 2.1.10
+        verified: 2.1.10
       dependencies:
       - name: com.unity.modules.vr
         version: 1.0.0
