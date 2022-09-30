@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: 7efbd8df4f8f248a58d8a33c88abe034, type: 3}
       propertyPath: m_Name
-      value: BobbleArena-Column
+      value: BobbleArena-Column Variant
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7efbd8df4f8f248a58d8a33c88abe034, type: 3}
       propertyPath: m_RootOrder
@@ -57,3 +57,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7efbd8df4f8f248a58d8a33c88abe034, type: 3}
+--- !u!1 &4528037533864450999 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 7efbd8df4f8f248a58d8a33c88abe034,
+    type: 3}
+  m_PrefabInstance: {fileID: 4528037533864549655}
+  m_PrefabAsset: {fileID: 0}
+--- !u!208 &6813138665717963524
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4528037533864450999}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.035, y: 2.135, z: 1}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 2.3, z: 0}
+  m_TimeToStationary: 0.5
