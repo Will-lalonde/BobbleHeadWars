@@ -134,7 +134,8 @@ GameObject:
   m_Component:
   - component: {fileID: 36981468}
   - component: {fileID: 36981469}
-  m_Layer: 13
+  - component: {fileID: 36981470}
+  m_Layer: 16
   m_Name: WallTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -168,6 +169,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 250.55, y: 17.14, z: 66.7}
   m_Center: {x: 0, y: 6.72, z: -90.6}
+--- !u!114 &36981470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 36981467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe4bee351216099469003c72cc97a8e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &57367022 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8cc6a767412268d4aab4bfa3bc28c391,
@@ -1373,8 +1386,8 @@ MonoBehaviour:
   - {fileID: 2090705035}
   - {fileID: 86997118}
   alien: {fileID: 4343454162359734065, guid: f391f699232d98b48ba3832880d78dcb, type: 3}
-  maxAliensOnScreen: 50
-  totalAliens: 50
+  maxAliensOnScreen: 10
+  totalAliens: 10
   minSpawnTime: 0
   maxSpawnTime: 3
   aliensPerSpawn: 3
