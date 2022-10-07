@@ -5,6 +5,7 @@ using UnityEngine;
 public class AreanaWall : MonoBehaviour
 {
     private Animator arenaAnimator;
+    public bool IsLowered;
     void Start()
     {
         GameObject arena = transform.parent.gameObject;
