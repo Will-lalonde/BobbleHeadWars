@@ -8,7 +8,14 @@ public class PlayerController : MonoBehaviour
     public Rigidbody head;
     public LayerMask layerMask;
     public Animator bodyAnimator;
-    
+    public float[] hitForce;
+    public float timeBetweenHits = 2.5f;
+    public Rigidbody marineBody;
+
+    private bool isHit = false;
+    private bool isDead = false;
+    private float timeSinceHit = 0;
+    private int hitNumber = -1;
     private Vector3 currentLookTarget = Vector3.zero;
     private CharacterController characterController;
 
@@ -61,5 +68,57 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        if (isHit)
+        {
+            timeSinceHit += Time.deltaTime;
+            if (timeSinceHit > timeBetweenHits)
+            {
+                isHit = false;
+                timeSinceHit = 0;
+            }
+        }
+
     }
+
+    public void Die()
+    {
+        bodyAnimator.SetBool("IsMoving", false);
+        marineBody.transform.parent = null;
+        marineBody.isKinematic = false;
+        marineBody.useGravity = true;
+        marineBody.gameObject.GetComponent<CapsuleCollider>().enabled = true;
+        marineBody.gameObject.GetComponent<Gun>().enabled = false;
+
+        Destroy(head.gameObject.GetComponent<HingeJoint>());
+        head.transform.parent = null;
+        head.useGravity = true;
+        SoundManager.Instance.PlayOneShot(SoundManager.Instance.marineDeath);
+        Destroy(gameObject);
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        Alien alien = other.gameObject.GetComponent<Alien>();
+        if (alien != null)
+        { // 1
+            if (!isHit)
+            {
+                hitNumber += 1; // 2
+                CameraShake cameraShake = Camera.main.GetComponent<CameraShake>();
+                if (hitNumber < hitForce.Length) // 3
+                {
+                    cameraShake.intensity = hitForce[hitNumber];
+                    cameraShake.Shake();
+                }
+                else
+                {
+                    Die();
+                }
+                isHit = true; // 4
+                SoundManager.Instance.PlayOneShot(SoundManager.Instance.hurt);
+            }
+            alien.Die();
+        }
+    }
+
 }
