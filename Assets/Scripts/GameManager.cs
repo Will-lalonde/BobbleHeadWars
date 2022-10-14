@@ -8,7 +8,9 @@ public class GameManager : MonoBehaviour
     public GameObject[] spawnPoints;
     public GameObject alien;
     public GameObject upgradePrefab;
+    public GameObject deathFloor;
     public Gun gun;
+    public Animator arenaAnimator;
 
     public float upgradeMaxTimeSpawn = 7.5f;
     public int maxAliensOnScreen;
@@ -111,15 +113,30 @@ public class GameManager : MonoBehaviour
 
                         alienScript.OnDestroy.AddListener(AlienDestroyed);
 
+                        alienScript.GetDeathParticles().SetDeathFloor(deathFloor);
+
                     }
                 }
             }
         }
     }
 
-   public void AlienDestroyed()
+
+    public void AlienDestroyed()
 {
         aliensOnScreen -= 1;
         totalAliens -= 1;
-}
+
+        if (totalAliens == 0)
+        {
+            Invoke("endGame", 2.0f);
+        }
+    }
+    private void endGame()
+    {
+        SoundManager.Instance.PlayOneShot(SoundManager.Instance.
+        elevatorArrived);
+        arenaAnimator.SetTrigger("PlayerWon");
+    }
+
 }

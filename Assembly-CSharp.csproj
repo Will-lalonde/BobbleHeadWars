@@ -57,6 +57,7 @@
     <Compile Include="Assets\Scripts\AreanaWall.cs" />
     <Compile Include="Assets\Scripts\Gun.cs" />
     <Compile Include="Assets\Scripts\Rotator.cs" />
+    <Compile Include="Assets\Scripts\SelfDestruct.cs" />
     <Compile Include="Assets\Scripts\CameraShake.cs" />
     <Compile Include="Assets\Scripts\Upgrade.cs" />
     <Compile Include="Assets\Scripts\SoundManager.cs" />
@@ -64,7 +65,8 @@
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\CameraMovement.cs" />
     <Compile Include="Assets\Scripts\Projectile.cs" />
-    <Compile Include="Assets\Scripts\SelfDestruct.cs" />
+    <Compile Include="Assets\Scripts\DeathParticales.cs" />
+    <Compile Include="Assets\Scripts\Arena.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
