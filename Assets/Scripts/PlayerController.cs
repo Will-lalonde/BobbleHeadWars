@@ -20,7 +20,23 @@ public class PlayerController : MonoBehaviour
     private Vector3 currentLookTarget = Vector3.zero;
     private CharacterController characterController;
 
-    // Start is called before the first frame update
+    void Die()
+    {
+        bodyAnimator.SetBool("IsMoving", false);
+        marineBody.transform.parent = null;
+        marineBody.isKinematic = false;
+        marineBody.useGravity = true;
+        marineBody.gameObject.GetComponent<CapsuleCollider>().enabled = true;
+        marineBody.gameObject.GetComponent<Gun>().enabled = false;
+
+        Destroy(head.gameObject.GetComponent<HingeJoint>());
+        head.transform.parent = null;
+        head.useGravity = true;
+        SoundManager.Instance.PlayOneShot(SoundManager.Instance.marineDeath);
+        deathParticales.Activate();
+        Destroy(gameObject);
+    }
+
     void Start()
     {
 
@@ -33,6 +49,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            Die();
+        }
+
         Vector3 moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         characterController.SimpleMove(moveDirection * moveSpeed);
     }
@@ -106,23 +127,6 @@ public class PlayerController : MonoBehaviour
             }
             alien.Die();
         }
-
-        void Die()
-    {
-        bodyAnimator.SetBool("IsMoving", false);
-        marineBody.transform.parent = null;
-        marineBody.isKinematic = false;
-        marineBody.useGravity = true;
-        marineBody.gameObject.GetComponent<CapsuleCollider>().enabled = true;
-        marineBody.gameObject.GetComponent<Gun>().enabled = false;
-
-        Destroy(head.gameObject.GetComponent<HingeJoint>());
-        head.transform.parent = null;
-        head.useGravity = true;
-        SoundManager.Instance.PlayOneShot(SoundManager.Instance.marineDeath);
-        deathParticales.Activate();
-        Destroy(gameObject);
-    }
     }
 
 }
